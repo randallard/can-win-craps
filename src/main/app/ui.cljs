@@ -2,23 +2,12 @@
   (:require
     [com.fulcrologic.fulcro.components :as comp :refer [defsc]]
     [com.fulcrologic.fulcro.dom :as dom]))
-
-(defsc Strategy [this {:strategy/keys [id description] :as props}]
-  {:query [:strategy/id :strategy/description]
-   :ident :strategy/id
-   :initial-state {:strategy/id :param/id
-                   :strategy/description :param/description}}
-  (dom/div {:style {:marginLeft "20px"}} description))
-(def ui-strategy (comp/factory Strategy {:kefyn :strategy/id}))
-(defsc Person [this {:person/keys [id name strategies] :as props}]
-  {:query [:person/id :person/name {:person/strategies (comp/get-query Strategy)}]
+(defsc Person [this {:person/keys [id name] :as props}]
+  {:query [:person/id :person/name]
    :ident :person/id
    :initial-state {:person/id :param/id
-                   :person/name :param/name
-                   :person/strategies [{:id 1
-                                        :description "Bet minimum on Pass Line before come out roll"}]}}
-  (dom/div {:style {:marginBottom "20px"}} (dom/h3 {} name)
-           (map ui-strategy strategies)))
+                   :person/name :param/name}}
+  (dom/div {:style {:marginBottom "20px"}} (dom/h3 {} name)))
 (def ui-person (comp/factory Person {:keyfn :person/id}))
 
 (defsc Root [this {:root/keys [people]}]
