@@ -1,88 +1,28 @@
+# Implemented
+- people name
+
+# Next
+- people has strategy
+
+# Notes
+- player has a name, shooter?, strategies and holdings
+- table has bets, pass-line, odds etc
+- bets have min, max, payout, win condition, lose condition
+- conditions are dice numbers, 
+- strategies are where, what, when
+         where: what bets at the table, pass-line, odds, etc
+         what: what to do, cash out, bet, tip, get cash
+           bet: how much, percent of holdings or winnings, or set dollar amount
+- examples of strategies
+   - on the pass line bet the min after a win
+   - on the pass line bet the min after a loss
+   - on the pass line bet double the previous bet after a loss
+   - on the pass line bet double the previous bet after a win
+   - on the odds, bet the min after point is set
+   - on the odds, bet the max after point is set
+   - on the odds, bet double the previous bet after a loss
+   - on the odds, bet double the previous bet after a win
+   - dealer, tip after 3 wins or 5 plays or 15 minutes
+
 # Getting set up in IntelliJ Idea
-
-You should have Cursive installed in IntelliJ
-
-Start by setting deps.edn to open in IntelliJ - for example, in Windows file explorer, right click deps.edn and choose 'open with' then 'choose another application'.  
-Check the box next to "Always use this app to open .edn files" and select IntelliJ Idea 
-
-Open IntelliJ Idea by double clicking deps.edn
-
-Find and click the Terminal tab at the bottom of IntelliJ Idea
-cd to your repo, probably fulcro-developers-guide-start
-run shadow-cljs install with the following command
-
-    npm install shadow-cljs react react-dom --save
-
-run in the terminal
-
-    npx shadow-cljs server
-
-in a browser, go to the localhost:9### listed (where :9### is maybe :9630)
-
-click 'Builds' in the top tabs list
-
-click on the word 'main' so you can see the updates as it compiles, text in a box labeled 'Status' will appear
-
-click 'Watch'
-wait for green
-
-in a new tab, go to http://localhost:8000
-
-Should see "Ready to go!"
-
-If you have trouble with the following steps - refer to the instructions at: https://cursive-ide.com/userguide/deps.html
-
-in IntelliJ
-
-Edit Configurations
-
-add (+) Clojure REPL - Remote
-
-set the following
-
-name: cljs repl
-
-connection type:  nREPL
-
-connection details:
-
-connect to server
-- host: localhost
-- port: 9000
-
-click 'apply' then 'ok'
-
-Choose 'cljs repl'
-
-click the green play button next to it
-
-click in the repl where you see "Connecting to remote nREPL..."
-
-let's run some clojure in the repl - enter the following 
-
-    (+ 1 1)
-
-submit with ctrl+enter
-
-hopefully you see => 2 show up in the REPL
-
-to connect to the app running in the browser, run
-
-    (shadow/repl :main)
-
-now you can run
-
-    (js/alert "howdy")
-
-go to your localhost:8000 tab and you should see the alert "howdy"
-
-click ok on that
-
-open dev tools there in chrome and go to the console
-
-back in the repl, run
-
-    (print "up and running!")
-
-in the console of the browser you should see "up and running!"
-
+see https://github.com/randallard/fulcro-developers-guide-start
