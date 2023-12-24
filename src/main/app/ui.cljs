@@ -7,7 +7,7 @@
    :ident :strategy/id
    :initial-state {:strategy/id :param/id
                    :strategy/description :param/description}}
-  (dom/div {:style {:marginBottom "20px"}} (dom/p {} description)))
+  (dom/div {:style {:marginLeft "20px"}} (dom/p {} description)))
 (def ui-strategy (comp/factory Strategy {:keyfn :strategy/id}))
 (defsc Person [this {:person/keys [id name strategies] :as props}]
   {:query [:person/id :person/name {:person/strategies (comp/get-query Strategy)}]
