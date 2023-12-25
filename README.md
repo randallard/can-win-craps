@@ -1,8 +1,11 @@
 # Implemented
 - people name
+- people has strategy
+- table id, people
+- bets name
 
 # Next
-- people has strategy
+- table has bets
 
 # Notes
 - player has a name, shooter?, strategies and holdings
