@@ -9,18 +9,6 @@
                    :strategy/description :param/description}}
   (dom/div {:style {:marginLeft "20px"}} (dom/p {} description)))
 (def ui-strategy (comp/factory Strategy {:keyfn :strategy/id}))
-(defsc Person [this {:person/keys [id name strategies] :as props}]
-  {:query [:person/id :person/name {:person/strategies (comp/get-query Strategy)}]
-   :ident :person/id
-   :initial-state {:person/id :param/id
-                   :person/name :param/name
-                   :person/strategies [{:id 1 :description "On the pass line,
-                                                            make the minimum bet,
-                                                            before the come out roll"}]}}
-  (dom/div {:style {:marginBottom "20px"}}
-           (dom/h3 {} name)
-           (map ui-strategy strategies)))
-(def ui-person (comp/factory Person {:keyfn :person/id}))
 (defsc Bet [this {:bet/keys [id name] :as props}]
   {:query [:bet/id :bet/name]
    :ident :bet/id
@@ -29,6 +17,27 @@
   (dom/div {:style {:marginBottom "20px"}}
            (dom/h3 {} name)))
 (def ui-bet (comp/factory Bet {:keyfn :bet/id}))
+; placed-bet has bet wager
+; :query [:placed-bet/id {:placed-bet/bet (comp/get-query Bet)} :placed-bet/wager]
+(defsc PlacedBet [this {:placed-bet/keys [id] :as props}]
+  {:query [:placed-bet/id]
+   :ident :placed-bet/id
+   :initial-state {:placed-bet/id :param/id}}
+  (dom/div {} "Placed Bet Id " id ))
+(def ui-placed-bet (comp/factory PlacedBet {:keyfn :placed-bet/id}))
+(defsc Person [this {:person/keys [id name strategies placed-bets] :as props}]
+  {:query [:person/id :person/name {:person/strategies (comp/get-query Strategy)}]
+   :ident :person/id
+   :initial-state {:person/id :param/id
+                   :person/name :param/name
+                   :person/strategies [{:id 1 :description "On the pass line,
+                                                            make the minimum bet,
+                                                            before the come out roll"}]
+                   :person/placed-bets [{:id 1}]}}
+  (dom/div {:style {:marginBottom "20px"}}
+           (dom/h3 {} name)
+           (map ui-strategy strategies)))
+(def ui-person (comp/factory Person {:keyfn :person/id}))
 (defsc Table [this {:table/keys [id people bets] :as props}]
   {:query [:table/id {:table/people (comp/get-query Person)} {:table/bets (comp/get-query Bet)}]
    :ident :table/id
